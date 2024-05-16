@@ -42,8 +42,8 @@ def convert_xml_to_yolo(xml_path, output_dir, class_mapping):
             f.write(f"{class_id} {x_center:.6f} {y_center:.6f} {w:.6f} {h:.6f}\n")
 
 def main():
-    xml_dir = r'D:\dataset\weapon\Train\Annotations'  # Replace with your XML directory
-    output_dir = r'D:\dataset\weapon\Train\yolo annotations'  # Replace with your desired output directory
+    xml_dir = r'D:\dataset\weapon\all\Test\Annotations'  # Replace with your XML directory
+    output_dir = r'D:\dataset\weapon\all\Test\labels'  # Replace with your desired output directory
     class_mapping = {
         'gun': 0,  # Replace 'class1' with your actual class name and assign the correct YOLO ID
     }

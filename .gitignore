@@ -1,0 +1,8 @@
+*.pt
+multi_video_frame/**/*.jpg
+multi_video_frame/**/*.jpeg
+multi_video_frame/**/*.png
+multi_video_frame/**/*.gif
+multi_video_frame/**/*.txt
+
+multi_video_frame/**/*
