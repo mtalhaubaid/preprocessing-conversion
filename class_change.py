@@ -19,7 +19,7 @@ def process_files_in_folder(folder_path, desired_number):
             replace_first_element(file_path, desired_number)
 
 if __name__ == "__main__":
-    folder_path = r"D:\talha\earpods\valid\labels"  # Replace this with the path to your folder
+    folder_path = r"D:\user dataset\car annotation t27c\annotations"  # Replace this with the path to your folder
     desired_number = 0  # Replace this with the desired number
 
     process_files_in_folder(folder_path, desired_number)

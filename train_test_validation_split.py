@@ -1,50 +1,72 @@
 import os
 import shutil
 import random
-from sklearn.model_selection import train_test_split
 
-def split_dataset(image_dir, annotation_dir, train_ratio=0.7, val_ratio=0.15, test_ratio=0.15, seed=None):
-    """Splits a dataset of images and annotations into train, test, and validation sets.
+# Define the paths
+images_path = r"D:\user dataset\car annotation t27c\images"
+annotations_path = r"D:\user dataset\car annotation t27c\annotations"
+output_path = r"D:\user dataset\car annotation t27c\split_dataset"
 
-    Args:
-        image_dir (str): Path to the directory containing images.
-        annotation_dir (str): Path to the directory containing annotations.
-        train_ratio (float): Ratio for the training set (default: 0.7).
-        val_ratio (float): Ratio for the validation set (default: 0.15).
-        test_ratio (float): Ratio for the test set (default: 0.15).
-        seed (int): Random seed for reproducibility (default: None).
-    """
+# Define the output directories
+train_images_path = os.path.join(output_path, 'train', 'images')
+train_annotations_path = os.path.join(output_path, 'train', 'annotations')
+valid_images_path = os.path.join(output_path, 'valid', 'images')
+valid_annotations_path = os.path.join(output_path, 'valid', 'annotations')
+test_images_path = os.path.join(output_path, 'test', 'images')
+test_annotations_path = os.path.join(output_path, 'test', 'annotations')
 
-    if not os.path.exists(image_dir):
-        raise ValueError(f"Image directory not found: {image_dir}")
-    if not os.path.exists(annotation_dir):
-        raise ValueError(f"Annotation directory not found: {annotation_dir}")
+# Create the output directories
+os.makedirs(train_images_path, exist_ok=True)
+os.makedirs(train_annotations_path, exist_ok=True)
+os.makedirs(valid_images_path, exist_ok=True)
+os.makedirs(valid_annotations_path, exist_ok=True)
+os.makedirs(test_images_path, exist_ok=True)
+os.makedirs(test_annotations_path, exist_ok=True)
 
-    if train_ratio + val_ratio + test_ratio != 1:
-        raise ValueError("Train, validation, and test ratios must sum to 1")
+# Get list of all image files and annotations
+images = os.listdir(images_path)
+annotations = os.listdir(annotations_path)
 
-    image_filenames = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
-    annotation_filenames = [f for f in os.listdir(annotation_dir) if os.path.isfile(os.path.join(annotation_dir, f))]
+# Ensure the images and annotations lists are sorted
+images.sort()
+annotations.sort()
 
-    if not set(image_filenames) == set(annotation_filenames):
-        raise ValueError("Missing annotations for some images or vice versa.")
+# Check that every image has a corresponding annotation
+image_files = [f for f in images if os.path.isfile(os.path.join(images_path, f))]
+annotation_files = [f for f in annotations if os.path.isfile(os.path.join(annotations_path, f))]
 
-    random.seed(seed)
-    train_val, test = train_test_split(image_filenames, test_size=test_ratio)
-    train, val = train_test_split(train_val, test_size=val_ratio / (train_ratio + val_ratio))
+# Shuffle the dataset
+random.seed(42)
+combined = list(zip(image_files, annotation_files))
+random.shuffle(combined)
+image_files, annotation_files = zip(*combined)
 
-    splits = {'train': train, 'val': val, 'test': test}
-    for split in splits:
-        os.makedirs(os.path.join(image_dir, split, 'images'), exist_ok=True)
-        os.makedirs(os.path.join(image_dir, split, 'labels'), exist_ok=True)
-        os.makedirs(os.path.join(annotation_dir, split, 'images'), exist_ok=True)
-        os.makedirs(os.path.join(annotation_dir, split, 'labels'), exist_ok=True)
+# Calculate split sizes
+total_files = len(image_files)
+train_size = int(total_files * 0.7)
+valid_size = int(total_files * 0.2)
 
-        for filename in splits[split]:
-            shutil.move(os.path.join(image_dir, filename), os.path.join(image_dir, split, 'images', filename))
-            shutil.move(os.path.join(annotation_dir, filename), os.path.join(annotation_dir, split, 'labels', filename))
+# Split the dataset
+train_images = image_files[:train_size]
+train_annotations = annotation_files[:train_size]
+valid_images = image_files[train_size:train_size + valid_size]
+valid_annotations = annotation_files[train_size:train_size + valid_size]
+test_images = image_files[train_size + valid_size:]
+test_annotations = annotation_files[train_size + valid_size:]
 
-if __name__ == "__main__":
-    image_dir = r"D:\dataset\weapon\all\all data\images"  # Replace with your image folder path
-    annotation_dir = r"D:\dataset\weapon\all\all data\labels"  # Replace with your annotation folder path
-    split_dataset(image_dir, annotation_dir)
+# Function to copy files to the designated folder
+def copy_files(file_list, source_folder, dest_folder):
+    for file in file_list:
+        shutil.copy(os.path.join(source_folder, file), os.path.join(dest_folder, file))
+
+# Copy the files to their respective directories
+copy_files(train_images, images_path, train_images_path)
+copy_files(train_annotations, annotations_path, train_annotations_path)
+copy_files(valid_images, images_path, valid_images_path)
+copy_files(valid_annotations, annotations_path, valid_annotations_path)
+copy_files(test_images, images_path, test_images_path)
+copy_files(test_annotations, annotations_path, test_annotations_path)
+
+print(f"Train set: {len(train_images)} images and annotations")
+print(f"Validation set: {len(valid_images)} images and annotations")
+print(f"Test set: {len(test_images)} images and annotations")
