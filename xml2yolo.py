@@ -1,3 +1,11 @@
+# **Converts individual XML annotations (bounding boxes) to YOLO format text files.
+
+# Inputs: XML file path, output directory, class name mapping dictionary.
+# Parses XML for object bounding boxes and class names.
+# Normalizes bounding box coordinates (0-1) for YOLO format.
+# Outputs YOLO formatted text files with class ID, normalized center coordinates, and width/height.**
+
+
 import xml.etree.ElementTree as ET
 import os
 

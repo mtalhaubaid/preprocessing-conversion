@@ -1,3 +1,8 @@
+# Cleans up datasets by removing empty annotations and their associated images.
+# Maintains data consistency by removing orphaned image files without annotations.
+# Prints informative messages about deleted files.
+
+
 import os
 
 def process_files(folder_path):

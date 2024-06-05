@@ -1,19 +1,24 @@
+# This Python code splits a dataset images and annotations (text files) into training, validation, and test sets. 
+# It shuffles the data for randomness and ensures each image has a corresponding annotation. 
+# The script creates folders for the split data and copies the corresponding image-annotation pairs into their respective folders.
+
+
 import os
 import shutil
 import random
 
 # Define the paths
-images_path = r"D:\user dataset\car annotation t27c\images"
-annotations_path = r"D:\user dataset\car annotation t27c\annotations"
-output_path = r"D:\user dataset\car annotation t27c\split_dataset"
+images_path = r"D:\dataset\New folder\obj_train_data\images"
+annotations_path = r"D:\dataset\New folder\obj_train_data\labels"
+output_path = r"D:\dataset\New folder\obj_train_data\split_dataset"
 
 # Define the output directories
 train_images_path = os.path.join(output_path, 'train', 'images')
-train_annotations_path = os.path.join(output_path, 'train', 'annotations')
+train_annotations_path = os.path.join(output_path, 'train', 'labels')
 valid_images_path = os.path.join(output_path, 'valid', 'images')
-valid_annotations_path = os.path.join(output_path, 'valid', 'annotations')
+valid_annotations_path = os.path.join(output_path, 'valid', 'labels')
 test_images_path = os.path.join(output_path, 'test', 'images')
-test_annotations_path = os.path.join(output_path, 'test', 'annotations')
+test_annotations_path = os.path.join(output_path, 'test', 'labels')
 
 # Create the output directories
 os.makedirs(train_images_path, exist_ok=True)

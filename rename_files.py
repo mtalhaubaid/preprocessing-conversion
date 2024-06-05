@@ -1,3 +1,15 @@
+
+# Renames all files in a folder with sequential serial numbers (padded with zeros).
+
+# Inputs: Path to the folder containing files to rename.
+# Iterates through all files in the folder.
+# Extracts the original file extension (e.g., .txt, .jpg).
+# Constructs a new filename with a 3-digit serial number (padded with zeros) followed by the extension.
+# Creates full paths for the original and new filenames.
+# Attempts to rename the file using os.rename.
+# Increments the counter for the next file.
+# Handles potential errors if a file with the new name already exists.
+
 import os
 
 def rename_files_with_serial_numbers(folder_path):

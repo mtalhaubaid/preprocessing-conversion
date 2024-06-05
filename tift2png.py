@@ -1,3 +1,13 @@
+# Converts single-channel 16-bit grayscale TIFF images to PNG format.
+
+# Inputs: Path to TIFF image, path to output PNG file.
+# Reads the TIFF image using tifffile library.
+# Handles 16-bit grayscale by scaling pixel values to 0-255 range suitable for PNG.
+# Creates a PIL Image object from the scaled array and saves it as a PNG file.
+# Prints a success message upon conversion
+
+
+
 from PIL import Image 
 from PIL import Image 
 import PIL.Image

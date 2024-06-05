@@ -1,3 +1,15 @@
+# Extracts frames from videos at a specified frame rate and saves them in separate folders.
+
+# Inputs: Path to the folder containing videos, path to the output folder root, desired frames per second (fps).
+# Iterates through all video files (MP4, AVI, MKV by default) in the input folder.
+# Creates an output folder with the same name as the video file to store extracted frames.
+# Opens the video using OpenCV.
+# Calculates total frames, frame rate, and frame interval based on desired fps.
+# Reads frames in a loop, breaking when no frame is available.
+# Saves frames only at specified intervals based on the frame rate.
+# Uses cv2.imwrite to write each frame as a JPEG image.
+# Prints information about extracted frames and their location.
+
 import cv2
 import os
 

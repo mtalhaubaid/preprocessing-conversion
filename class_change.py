@@ -1,3 +1,9 @@
+# Modifies text files in a controlled manner, replacing the first element in each line.
+# Assumes the first element is separated by a space from the rest of the line.
+# Warns about potential data loss as the original content is overwritten
+
+
+
 import os
 
 def replace_first_element(file_path, desired_number):
