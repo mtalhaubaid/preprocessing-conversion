@@ -33,5 +33,5 @@ def process_files(folder_path):
                 print(f"No corresponding image found for: {txt_file_path}")
 
 if __name__ == "__main__":
-    folder_path = r"D:\user dataset\car annotation t27c\obj_train_data"  # Replace with the path to your folder
+    folder_path = r"C:\Users\ASDF\Downloads\final_logo\valid\combine"  # Replace with the path to your folder
     process_files(folder_path)

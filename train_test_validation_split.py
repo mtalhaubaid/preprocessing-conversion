@@ -8,9 +8,9 @@ import shutil
 import random
 
 # Define the paths
-images_path = r"D:\dataset\New folder\obj_train_data\images"
-annotations_path = r"D:\dataset\New folder\obj_train_data\labels"
-output_path = r"D:\dataset\New folder\obj_train_data\split_dataset"
+images_path = r"D:\user dataset\numberplate anno\for model\images\images"
+annotations_path = r"D:\user dataset\numberplate anno\for model\images\labels"
+output_path = r"D:\user dataset\numberplate anno\for model\images\split"
 
 # Define the output directories
 train_images_path = os.path.join(output_path, 'train', 'images')

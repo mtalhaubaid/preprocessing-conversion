@@ -38,4 +38,4 @@ def separate_images_annotations(source_folder):
       os.replace(source_path, destination_path)
 
 # Replace 'path/to/your/folder' with your actual folder path
-separate_images_annotations(r'D:\dataset\New folder\obj_train_data')
+separate_images_annotations(r'D:\user dataset\numberplate anno\for model\images')
