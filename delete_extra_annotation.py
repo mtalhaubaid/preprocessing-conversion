@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory containing the images and annotation files
-directory = r'C:\Users\ASDF\Downloads\dataset_1\train - Copy\images'
+directory = r'D:\user dataset\car_brand_detection_userdataset\toyota_2'
 
 # List of valid image extensions
 image_extensions = {'.jpg', '.jpeg', '.png', '.bmp'}

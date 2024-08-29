@@ -30,5 +30,5 @@ def delete_unannotated_images(directory):
                 print(f"Deleted: {file_path}")
 
 # Example usage
-directory_path = r"C:\Users\ASDF\Downloads\dataset_1\train - Copy\images"  # Replace with the path to your directory
+directory_path = r"D:\user dataset\car_brand_detection_userdataset\toyota_2"  # Replace with the path to your directory
 delete_unannotated_images(directory_path)

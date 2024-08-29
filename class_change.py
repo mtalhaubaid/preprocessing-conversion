@@ -25,8 +25,8 @@ def process_files_in_folder(folder_path, desired_number):
             replace_first_element(file_path, desired_number)
 
 if __name__ == "__main__":
-    folder_path = r"D:\user dataset\numberplate anno\outside dataset\valid\labels"  # Replace this with the path to your folder
-    desired_number = 0  # Replace this with the desired number
+    folder_path = r"D:\user dataset\car_brand_detection_userdataset\toyota_2"  # Replace this with the path to your folder
+    desired_number = 10  # Replace this with the desired number
 
     process_files_in_folder(folder_path, desired_number)
 
