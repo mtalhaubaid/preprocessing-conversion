@@ -8,9 +8,9 @@ import shutil
 import random
 
 # Define the paths
-images_path = r"D:\user dataset\car_brand_detection_public_dataset\dataset_for_training\images"
-annotations_path = r"D:\user dataset\car_brand_detection_public_dataset\dataset_for_training\labels"
-output_path = r"D:\user dataset\car_brand_detection_public_dataset\dataset_for_training\splited_data"
+images_path = r"D:\dataset\rabia\traning data\images"
+annotations_path = r"D:\dataset\rabia\traning data\labels"
+output_path = r"D:\dataset\rabia\traning data\slpited_data"
 
 # Define the output directories
 train_images_path = os.path.join(output_path, 'train', 'images')

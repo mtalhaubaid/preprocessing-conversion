@@ -38,4 +38,4 @@ def separate_images_annotations(source_folder):
       os.replace(source_path, destination_path)
 
 # Replace 'path/to/your/folder' with your actual folder path
-separate_images_annotations(r'D:\user dataset\numberplate anno\for model\images')
+separate_images_annotations(r'C:\Users\ASDF\Desktop\Yolov5_ocr_charater (2)\all')
