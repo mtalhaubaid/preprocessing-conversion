@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory containing the images and annotation files
-directory = r'D:\user dataset\car_brand_detection_userdataset\toyota_2'
+directory = r'D:\Musawir\code_testing_folder\combine'
 
 # List of valid image extensions
 image_extensions = {'.jpg', '.jpeg', '.png', '.bmp'}

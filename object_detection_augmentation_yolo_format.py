@@ -5,10 +5,10 @@ import numpy as np
 import shutil
 
 # Define paths
-images_path = 'path_to_your_images_folder'
-annotations_path = 'path_to_your_annotations_folder'
-output_images_path = 'path_to_output_augmented_images'
-output_annotations_path = 'path_to_output_augmented_annotations'
+images_path = r'D:\apha_numeric_746\augmented_dataset\images'
+annotations_path = r'D:\apha_numeric_746\augmented_dataset\anno'
+output_images_path = r'D:\apha_numeric_746\augmented_dataset\2_ShiftScaleRotate_GaussNoise_annotated_images'
+output_annotations_path = r'D:\apha_numeric_746\augmented_dataset\2_ShiftScaleRotate_GaussNoise_annotated_labels'
 
 # Create output directories if not exist
 os.makedirs(output_images_path, exist_ok=True)
@@ -16,13 +16,32 @@ os.makedirs(output_annotations_path, exist_ok=True)
 
 # Define augmentation pipeline
 transform = A.Compose([
-    A.HorizontalFlip(p=0.5),
-    A.RandomBrightnessContrast(p=0.2),
-    A.Rotate(limit=15, p=0.5),
-    A.Blur(blur_limit=3, p=0.2),
-    A.GaussianNoise(p=0.2),
-    A.ColorJitter(p=0.2),
-    A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.1, rotate_limit=45, p=0.5)
+    # A.HorizontalFlip(p=0.5),
+    # A.RandomBrightnessContrast(p=0.3),
+    # A.Rotate(limit=15, p=0.5),
+    # A.ColorJitter(p=0.3),
+    # A.ColorJitter(blur_limit=3, p=0.2),
+    # A.GaussNoise(p=0.9),
+
+    # 1
+    # A.ColorJitter(p=0.3),
+    # A.Blur(blur_limit=3, p=0.2),
+    # A.GaussNoise(p=0.4),
+
+
+    # 2
+    A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.1, rotate_limit=15, p=0.5),
+    A.GaussNoise(p=0.5),
+    
+
+    # 4
+    # A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.1, rotate_limit=15, p=0.5),
+    # A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.5),
+    # A.HueSaturationValue(hue_shift_limit=20, saturation_shift_limit=20, value_shift_limit=20, p=0.5),
+    # A.GaussNoise(p=0.5),
+    
+    # A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.1, rotate_limit=45, p=0.5)
+
 ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
 def read_yolo_annotation(file_path):
@@ -58,9 +77,19 @@ for image_file in os.listdir(images_path):
         aug_bboxes = augmented['bboxes']
         aug_class_labels = augmented['class_labels']
 
-        # Save augmented image and corresponding annotation
-        output_image_path = os.path.join(output_images_path, 'aug_' + image_file)
-        output_annotation_path = os.path.join(output_annotations_path, 'aug_' + annotation_file)
+        # Save augmented image and corresponding annotation 
+        # 4
+        # output_image_path = os.path.join(output_images_path, 'SSR_RBC_HSV_GN' + image_file)
+        # output_annotation_path = os.path.join(output_annotations_path, 'SSR_RBC_HSV_GN' + annotation_file)
+
+        # #1
+        # output_image_path = os.path.join(output_images_path, 'CJ_B_HSV_GN' + image_file)
+        # output_annotation_path = os.path.join(output_annotations_path, 'CJ_B_HSV_GN' + annotation_file)
+
+        # 2
+        output_image_path = os.path.join(output_images_path, 'SSR_GN' + image_file)
+        output_annotation_path = os.path.join(output_annotations_path, 'SSR_GN' + annotation_file)
+
         cv2.imwrite(output_image_path, aug_image)
         write_yolo_annotation(output_annotation_path, aug_bboxes, aug_class_labels)
         
