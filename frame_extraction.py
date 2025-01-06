@@ -31,10 +31,10 @@ def extract_frames(video_path, output_folder, fps=2):
     print(f"Frames saved at {fps} fps in: {output_folder}")
 if __name__ == "__main__":
     # Specify input video file path
-    input_video_path = r"C:\Users\ASDF\Desktop\anpr_dataset\2.mp4"
+    input_video_path = r"D:\ubi\dataset\illegal_parking_video\Number Plate Identification Improperly parked SUV.mp4"
     # Specify output folder to save frames
-    output_folder = r"D:\code\annotations-conversion\2"
+    output_folder = r"D:\code\annotations-conversion\3"
     # Specify frame rate for frame extraction (frames per second)
-    extraction_fps = 1
+    extraction_fps = 15
     # Extract frames from the video
     extract_frames(input_video_path, output_folder, fps=extraction_fps)
