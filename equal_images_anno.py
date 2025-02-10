@@ -30,5 +30,5 @@ def delete_unannotated_images(directory):
                 print(f"Deleted: {file_path}")
 
 # Example usage
-directory_path = r"C:\Users\ASDF\Desktop\Alpha & Numeric\obj_train_data"  # Replace with the path to your directory
+directory_path = r"D:\code\yolov8-custom-training\numberplate_ocr\combine"  # Replace with the path to your directory
 delete_unannotated_images(directory_path)

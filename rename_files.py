@@ -36,7 +36,7 @@ def rename_files_with_serial_numbers(folder_path):
 
 
 if __name__ == "__main__":
-    folder_path = r"D:\code\annotations-conversion\multi_video_frame\all"
+    folder_path = r"D:\ANPR_dataset\numberplate_only\NP_ROI_1280x720"
 
     if not os.path.isdir(folder_path):
         print("Error: Invalid folder path.")

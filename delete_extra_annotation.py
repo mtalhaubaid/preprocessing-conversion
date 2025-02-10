@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory containing the images and annotation files
-directory = r'D:\Musawir\code_testing_folder\combine'
+directory = r'D:\code\yolov8-custom-training\numberplate_ocr\combine'
 
 # List of valid image extensions
 image_extensions = {'.jpg', '.jpeg', '.png', '.bmp'}
