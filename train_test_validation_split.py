@@ -8,9 +8,9 @@ import shutil
 import random
 
 # Define the paths
-images_path = r"D:\code\yolov8-custom-training\numberplate_ocr\combine\images"
-annotations_path = r"D:\code\yolov8-custom-training\numberplate_ocr\combine\labels"
-output_path = r"D:\code\yolov8-custom-training\numberplate_ocr\combine\splitted_data_set_for_training"
+images_path = r"D:\user dataset\Aemen\images"
+annotations_path = r"D:\user dataset\Aemen\lables"
+output_path = r"D:\user dataset\Aemen\splited_dataset"
 
 # Define the output directories
 train_images_path = os.path.join(output_path, 'train', 'images')
