@@ -15,38 +15,49 @@ import os
 
 def extract_frames(video_path, output_folder, fps=2):
     """Extracts frames from a video and saves them in the specified output folder."""
-    # Create output folder if it doesn't exist
     os.makedirs(output_folder, exist_ok=True)
 
     video_capture = cv2.VideoCapture(video_path)
     total_frames = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_rate = video_capture.get(cv2.CAP_PROP_FPS)
+
+    if frame_rate == 0 or fps == 0:
+        print(f"⚠️ Skipping {video_path}: frame_rate={frame_rate}, fps={fps}")
+        return
+
     frame_interval = int(frame_rate / fps)
+    if frame_interval == 0:
+        frame_interval = 1  # Ensure we don't skip all frames if fps is very high
 
     frame_count = 0
+    saved_count = 0
+
     while True:
         ret, frame = video_capture.read()
         if not ret:
-            break  # Break loop if no frame is read
+            break
 
         if frame_count % frame_interval == 0:
             frame_output_path = os.path.join(output_folder, f"frame_{frame_count}.jpg")
             cv2.imwrite(frame_output_path, frame)
+            saved_count += 1
+
         frame_count += 1
 
     video_capture.release()
-    print(f"Frames extracted: {frame_count}")
+    print(f"Frames extracted: {saved_count}")
     print(f"Frames saved at {fps} fps in: {output_folder}")
+
 
 if __name__ == "__main__":
     # Specify input video folder path
-    input_video_folder = r"D:\user dataset\ANPR _New_dataset"  # Update with your folder path
+    input_video_folder = r"E:\dukto\cctv\frame blur weapons\gun shot 2"  # Update with your folder path
 
     # Specify output root folder to save frames
-    output_root_folder = r"multi_video_frame"  # Update with your folder path
+    output_root_folder = r"E:\dukto\cctv\frame blur weapons\frames"  # Update with your folder path
 
     # Specify frame rate for frame extraction (frames per second)
-    extraction_fps = 1
+    extraction_fps = 60
 
     # Get a list of all video files in the input folder
     video_files = [f for f in os.listdir(input_video_folder) if f.endswith((".mp4", ".avi", ".mkv"))]  # Add more extensions if needed
