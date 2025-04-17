@@ -88,9 +88,18 @@ def batch_download(url_list, resolution="best"):
 if __name__ == "__main__":
     # List of YouTube URLs to download
     youtube_urls = [
-        "https://www.youtube.com/shorts/tJ7QtQ4-ZZ4",
-        "https://www.youtube.com/watch?v=2upzJD56paA",
-        "https://www.youtube.com/watch?v=WJZTT-wn63o"
+        "https://www.youtube.com/watch?v=FgcUg837Fww",
+        "https://www.youtube.com/watch?v=UHTDEdqJyD4",
+        "https://www.youtube.com/watch?v=W_KNCGypkUE",
+        
+        "https://www.youtube.com/shorts/mymElEe0iMg",
+        "https://www.youtube.com/watch?v=ZoCeJbhevek",
+        "https://www.youtube.com/watch?v=zSjChjNhOfU&rco=1",
+        "https://www.youtube.com/watch?v=cvVROcbZKbs",
+        "https://www.youtube.com/watch?v=SLF9v4O_S5M",
+        "https://www.youtube.com/watch?v=TjvSCl6ZcOE",
+        "https://www.youtube.com/watch?v=3Ojsd6r4vO4&rco",
+
     ]
     
     # Set desired resolution (e.g., "720", "1080", or "best")

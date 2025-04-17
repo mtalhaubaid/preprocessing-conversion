@@ -8,9 +8,9 @@ import shutil
 import random
 
 # Define the paths
-images_path = r"D:\dataset\weapons\yolo_training\images"
-annotations_path = r"D:\dataset\weapons\yolo_training\labels"
-output_path = r"D:\dataset\weapons\yolo_training"
+images_path = r"D:\dataset\weapon\custom\images"
+annotations_path = r"D:\dataset\weapon\custom\labels"
+output_path = r"D:\dataset\weapon\custom\yolo training"
 
 # Define the output directories
 train_images_path = os.path.join(output_path, 'train', 'images')
